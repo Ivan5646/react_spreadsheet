@@ -3,3 +3,13 @@ $primary: #006699;
 h2 {
 	color: $primary;
 }
+
+
+.header {
+    background-color: #3BA2FB;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+    align-items: center;
+}

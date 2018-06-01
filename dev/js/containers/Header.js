@@ -11,7 +11,12 @@ class Header extends Component {
 
     render() {
         return (
-            <p>header component</p>
+            <div className="header">
+                <div>Add Column</div>
+                <div>Add Row</div>
+                <div>History</div>
+                <div>New Table</div>
+            </div>
         )
     }
 
