@@ -17,4 +17,14 @@ class Header extends Component {
 
 }
 
-export default Header;
+function mapStateToProps(state){ //takes a piece of state which is part of the Store and sends it to the Component as props
+    return {
+       testState: state
+    };
+}
+
+// function matchDispathToProps(dispatch){
+//     return bindActionCreators({onAddItem1: onAddItem}, dispatch)
+// }
+
+export default connect(mapStateToProps)(Header); // this is now a contanier
