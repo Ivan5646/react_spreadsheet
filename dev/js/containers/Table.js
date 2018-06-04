@@ -1,53 +1,56 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import PropTypes from 'prop-types'  
+// import Row from './Row'  // ?
 
 class Table extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
-            rows: [["row 1, cell 1", "row 1, cell 2"], ["row 2, cell 1", "row 2, cell 2"], ["row 3, cell 1", "row 2, cell 2"]]
+          data: {},
         }
-
-        this.addRow = this.addRow.bind(this);
-        this.createTable = this.createTable.bind(this);
     }
 
-    createTable(tableData) {
-        var table = document.createElement('table');
-        var tableBody = document.createElement('tbody');
-
-        tableData.forEach(function(rowData) {
-        var row = document.createElement('tr');
-
-        rowData.forEach(function(cellData) {
-          var cell = document.createElement('td');
-          cell.appendChild(document.createTextNode(cellData));
-          row.appendChild(cell);
-        });
-
-        tableBody.appendChild(row);
-        });
-
-        table.appendChild(tableBody);
-        document.body.appendChild(table);
+    handleChangedCell = ({ x, y }, value) => {
+        const modifiedData = Object.assign({}, this.state.data)
+        if (!modifiedData[y]) modifiedData[y] = {}
+        modifiedData[y][x] = value
+        this.setState({ data: modifiedData })
     }
 
-    addRow() {
-        var rows = this.state.rows
-        rows.push('new row')
-        this.setState({rows: rows})
+    updateCells = () => {
+        this.forceUpdate()
     }
 
     render() {
+        const rows = []
+
+        for (let y = 0; y < this.props.y + 1; y += 1) {
+          const rowData = this.state.data[y] || {}
+          rows.push(
+            <Row
+            handleChangedCell={this.handleChangedCell}
+            updateCells={this.updateCells}
+            key={y}
+            y={y}
+            x={this.props.x + 1}
+            rowData={rowData}
+            />,
+            )
+      }
         return (
-        <div>
-            <div>{this.createTable(this.state.rows)}</div>
-            <button id="addBtn" onClick={this.addRow}>ADD</button>
-        </div>
+            <div>
+                {rows}
+            </div>
         )
     }
+}
+
+Table.propTypes = {
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
 }
 
 
