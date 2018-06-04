@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-// import Cell from './Cell'
+import Cell from './Cell'
 
 class Row extends Component {
     constructor(props){
@@ -16,14 +16,14 @@ class Row extends Component {
         for (let x = 0; x < props.x; x += 1) {
             this.state.cells.push(
                 <Cell
-                key={`${x}-${y}`}
-                y={y}
-                x={x}
-                onChangedValue={props.handleChangedCell}
-                updateCells={props.updateCells}
-                value={props.rowData[x] || ''}
+                    key={`${x}-${y}`}
+                    y={y}
+                    x={x}
+                    onChangedValue={props.handleChangedCell}
+                    updateCells={props.updateCells}
+                    value={props.rowData[x] || ''}
                 />,
-                )
+            )
         }
 
         return (
