@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types'  
-// import Row from './Row'  // ?
+import Row from './Row'  
 
 class Table extends Component {
     constructor(props) {
@@ -13,8 +13,8 @@ class Table extends Component {
         }
     }
 
-    handleChangedCell = ({ x, y }, value) => {
-        const modifiedData = Object.assign({}, this.state.data)
+    handleChangedCell = ({ x, y }, value) => { // what is the { x, y } ?
+        const modifiedData = Object.assign({}, this.state.data) // copy the values
         if (!modifiedData[y]) modifiedData[y] = {}
         modifiedData[y][x] = value
         this.setState({ data: modifiedData })
@@ -28,17 +28,17 @@ class Table extends Component {
         const rows = []
 
         for (let y = 0; y < this.props.y + 1; y += 1) {
-          const rowData = this.state.data[y] || {}
-          rows.push(
+        const rowData = this.state.data[y] || {}
+        rows.push(
             <Row
-            handleChangedCell={this.handleChangedCell}
-            updateCells={this.updateCells}
-            key={y}
-            y={y}
-            x={this.props.x + 1}
-            rowData={rowData}
+                handleChangedCell={this.handleChangedCell}
+                updateCells={this.updateCells}
+                key={y}
+                y={y}
+                x={this.props.x + 1}
+                rowData={rowData}
             />,
-            )
+        )
       }
         return (
             <div>
