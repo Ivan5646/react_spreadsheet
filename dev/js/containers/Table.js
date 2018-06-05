@@ -35,7 +35,7 @@ class Table extends Component {
                 updateCells={this.updateCells}
                 key={y}
                 y={y}
-                x={1 + 1}
+                x={this.props.x + 1} // where are this.props recieved? 
                 rowData={rowData}
             />,
         )

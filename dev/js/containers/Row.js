@@ -16,7 +16,8 @@ class Row extends Component {
         for (let x = 0; x < 10; x += 1) {
             this.state.cells.push(
                 <Cell
-                    y={2+1}
+                    key={`${x}-${this.state.y}`} // y is not defined
+                    y={this.state.y}
                     x={x}
                 />,
             )
