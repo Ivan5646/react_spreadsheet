@@ -6,7 +6,7 @@ require('../../scss/style.scss');
 const App = () => (
     <div>
         <Header/>
-        <Table/>
+        <Table x={4} y={4}/>
     </div>
 );
 

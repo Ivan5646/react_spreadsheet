@@ -14,8 +14,8 @@ class Table extends Component {
     }
 
     handleChangedCell = ({ x, y }, value) => { // what is the { x, y } ?
-        const modifiedData = Object.assign({}, this.state.data) // copy the values
-        if (!modifiedData[y]) modifiedData[y] = {}
+        const modifiedData = Object.assign({}, this.state.data) // copying the values of this.state.data to const modifiedData
+        if (!modifiedData[y]) modifiedData[y] = {} 
         modifiedData[y][x] = value
         this.setState({ data: modifiedData })
     }
@@ -27,7 +27,7 @@ class Table extends Component {
     render() {
         const rows = []
 
-        for (let y = 0; y < 8 + 1; y += 1) {
+        for (let y = 0; y < this.props.y + 1; y += 1) { 
         const rowData = this.state.data[y] || {}
         rows.push(
             <Row
@@ -35,7 +35,7 @@ class Table extends Component {
                 updateCells={this.updateCells}
                 key={y}
                 y={y}
-                x={this.props.x + 1} // where are this.props recieved? 
+                x={this.props.x + 1} 
                 rowData={rowData}
             />,
         )
