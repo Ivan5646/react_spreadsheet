@@ -13,15 +13,11 @@ class Row extends Component {
     }
 
     render(){ 
-        for (let x = 0; x < props.x; x += 1) {
+        for (let x = 0; x < 10; x += 1) {
             this.state.cells.push(
                 <Cell
-                    key={`${x}-${y}`}
-                    y={y}
+                    y={2+1}
                     x={x}
-                    onChangedValue={props.handleChangedCell}
-                    updateCells={props.updateCells}
-                    value={props.rowData[x] || ''}
                 />,
             )
         }

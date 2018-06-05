@@ -247,3 +247,5 @@ Cell.propTypes = {
   y: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired,
 }
+
+export default Cell

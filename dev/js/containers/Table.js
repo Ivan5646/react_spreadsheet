@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import PropTypes from 'prop-types'  
-import Row from './Row'  
+import PropTypes from 'prop-types';  
+import Row from './Row';  
 
 class Table extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class Table extends Component {
     render() {
         const rows = []
 
-        for (let y = 0; y < this.props.y + 1; y += 1) {
+        for (let y = 0; y < 8 + 1; y += 1) {
         const rowData = this.state.data[y] || {}
         rows.push(
             <Row
@@ -35,7 +35,7 @@ class Table extends Component {
                 updateCells={this.updateCells}
                 key={y}
                 y={y}
-                x={this.props.x + 1}
+                x={1 + 1}
                 rowData={rowData}
             />,
         )
